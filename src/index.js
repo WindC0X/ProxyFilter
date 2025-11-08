@@ -918,7 +918,10 @@ export default {
                        `# 配置源: \n# ${sourceUrlInfo.join('\n# ')}\n`;
       
       // 生成 YAML 并返回
-      const yamlString = filterInfo + yaml.dump(filteredConfig);
+      const yamlString = filterInfo + yaml.dump(filteredConfig, {
+        flowLevel: -1,
+        lineWidth: -1
+      });
       
       // 清理过期缓存（定期进行）
       if (Math.random() < 0.1) { // 约10%的请求会触发清理
